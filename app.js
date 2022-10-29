@@ -1,7 +1,19 @@
 let arrayItemList = [];
-arrayItemList[0] = "";
 let taskList = document.getElementById("taskList");
+let itemInList = document.getElementsByClassName("itemInList");
+let currentList = localStorage.getItem("ALISTA");
+arrayItemList = [currentList];
 
+
+
+
+function printLi(){
+    // Executa o print na tela
+for (let i = 0; i < arrayItemList.length; i++)
+{
+    taskList.innerHTML = arrayItemList.join("<li class=itemInList>") + "</li>" + "<br>";
+}
+}
 
 
 //Função do botão
@@ -13,15 +25,26 @@ function getTaskInput ()
     arrayItemList.push(x);
 
 
-    localStorage.setItem("ALISTA", arrayItemList);
+    localStorage.setItem("ALISTA", arrayItemList, JSON.stringify());
 
-    // Executa o print na tela
-    for (let i = 0; i < arrayItemList.length; i++)
-    {
-        taskList.innerHTML = arrayItemList.join("<li>") + "</li>" + "<br>";
-    }
-
+    printLi();
 }
+
+function clearItems(){
+    localStorage.clear("ALISTA");
+    //Nao funciona
+    //Transformar array localstorage em lista primeiro
+    itemInList.remove();
+}
+
+printLi();
+
+
+
+
+
+
+
 
 
 
