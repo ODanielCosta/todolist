@@ -1,19 +1,16 @@
 let arrayItemList = [];
 let taskList = document.getElementById("taskList");
 let itemInList = document.getElementsByClassName("itemInList");
-let currentList = localStorage.getItem("ALISTA");
-arrayItemList = [currentList];
 
+//SLIT divide as palavras e transforma em array
+let savedList = localStorage.getItem("ALISTA").split(',');
+arrayItemList.push(savedList);
 
+//MAP dá para passar uma função que deixa alterar cada um dos item da array
+//JOIN retira as virgulas
+let currentList = savedList.map(item => `<li class=item>${item}</li>`).join('');
 
-
-function printLi(){
-    // Executa o print na tela
-for (let i = 0; i < arrayItemList.length; i++)
-{
-    taskList.innerHTML = arrayItemList.join("<li class=itemInList>") + "</li>" + "<br>";
-}
-}
+taskList.innerHTML = currentList;
 
 
 //Função do botão
@@ -24,20 +21,22 @@ function getTaskInput ()
     // Coloca o que estava no input dentro da array
     arrayItemList.push(x);
 
-
     localStorage.setItem("ALISTA", arrayItemList, JSON.stringify());
+ 
+    taskList.insertAdjacentHTML("beforeEnd",`<li class=item>${x}</li>`);
 
-    printLi();
+
 }
+
 
 function clearItems(){
+
     localStorage.clear("ALISTA");
-    //Nao funciona
-    //Transformar array localstorage em lista primeiro
-    itemInList.remove();
+    savedList = null;   
+    taskList.innerHTML = null;
 }
 
-printLi();
+
 
 
 
