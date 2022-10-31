@@ -1,0 +1,20 @@
+.segunda{
+    width: 50%;;
+}
+
+#taskList{
+    width:100%;
+}
+
+.item{
+    display: flex;
+    background-color: lightgrey;
+    padding: 5px 0px 5px 5px;
+    margin: 2px 0;
+    justify-content: space-between;
+}
+
+.eraser{
+    margin-right: 5px;
+}
+

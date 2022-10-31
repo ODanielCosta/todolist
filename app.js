@@ -1,19 +1,44 @@
 let arrayItemList = [];
 let taskList = document.getElementById("taskList");
-let itemInList = document.getElementsByClassName("itemInList");
+let itemInList = document.getElementsByClassName("item");
 
 //SLIT divide as palavras e transforma em array
 let savedList = localStorage.getItem("ALISTA").split(',');
 arrayItemList.push(savedList);
 
-//MAP dá para passar uma função que deixa alterar cada um dos item da array
-//JOIN retira as virgulas
-let currentList = savedList.map(item => `<li class=item>${item}</li>`).join('');
 
-taskList.innerHTML = currentList;
+//PRINT NA TELA
+savedList.forEach(function (item)
+{
+    taskList.innerHTML = "";
+
+    for (i = 0; i < savedList.length; i++)
+    {
+        let li = document.createElement('li');
+        li.textContent = savedList[i];
+        li.setAttribute('class', `item a${[i]}`);
+        taskList.appendChild(li);
+
+        let eraseBtn = document.createElement('button');
+        eraseBtn.textContent = 'Clear';
+        eraseBtn.setAttribute('class', 'eraser');
+        eraseBtn.setAttribute('onclick', 'erase');
+        li.appendChild(eraseBtn);
+    }
+
+});
 
 
-//Função do botão
+
+//BUTTON FUNCTIONS
+
+function erase ()
+{
+
+}
+
+
+
 function getTaskInput ()
 {
     //Vai buscar valor do input e mete em "x"
@@ -22,18 +47,20 @@ function getTaskInput ()
     arrayItemList.push(x);
 
     localStorage.setItem("ALISTA", arrayItemList, JSON.stringify());
- 
-    taskList.insertAdjacentHTML("beforeEnd",`<li class=item>${x}</li>`);
 
+    taskList.insertAdjacentHTML("beforeEnd", `<li class=item>${x}</li>`);
 
 }
 
 
-function clearItems(){
+function clearItems ()
+{
+
+    arrayItemList = [];
+
+    taskList.innerHTML = null;
 
     localStorage.clear("ALISTA");
-    savedList = null;   
-    taskList.innerHTML = null;
 }
 
 
