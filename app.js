@@ -16,9 +16,9 @@ function loadState ()
 {
     arrayItemList = localStorage.getItem("ALISTA").split(',');
     refresh();
+    //CORRIGIR LI VAZIA
     if (arrayItemList[0] === '' || arrayItemList.length == 0)
     {
-        console.log('bug');
         localStorage.clear("ALISTA");
         arrayItemList = [];
         taskList.replaceChildren();
@@ -34,9 +34,7 @@ function getTaskInput ()
     // Coloca o que estava no input dentro da array
     arrayItemList.push(x);
 
-    //localStorage.setItem("ALISTA", arrayItemList, JSON.stringify());
-
-    //taskList.insertAdjacentHTML("beforeEnd", `<li class=item>${x}</li>`);
+    localStorage.setItem("ALISTA", arrayItemList, JSON.stringify());
 
     let newItem = document.createElement('li');
     newItem.textContent = x;
@@ -46,10 +44,13 @@ function getTaskInput ()
     let eraseBtn = document.createElement('button');
     eraseBtn.textContent = 'Clear';
     eraseBtn.setAttribute('class', 'eraser');
-    eraseBtn.setAttribute('onclick', `erase`);
+    eraseBtn.setAttribute('onclick', `erase()`);
     newItem.appendChild(eraseBtn);
-
-
+    //IDENTIFICA NOVA LI
+    for (i = 0; i < arrayItemList.length; i++)
+    {
+        eraseBtn.setAttribute('onclick', `erase(${i})`);
+    }
 
 }
 
@@ -81,10 +82,6 @@ function refresh ()
     });
 
 }
-
-refresh();
-
-
 
 
 
@@ -126,6 +123,7 @@ taskInput.addEventListener('keypress', function (e)
     {
         getTaskInput();
         e.preventDefault();
+        taskInput.value = '';
     }
 });
 
