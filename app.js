@@ -1,60 +1,27 @@
 let arrayItemList = [];
 let taskList = document.getElementById("taskList");
 let itemInList = document.getElementsByClassName("item");
+let taskInput = document.getElementById('taskInput');
 
-//SLIT divide as palavras e transforma em array
-let savedList = localStorage.getItem("ALISTA").split(',');
-arrayItemList.push(savedList);
-
-
-//PRINT NA TELA
-function refresh ()
+//CLOSE WINDOW
+window.onbeforeunload = saveState;
+function saveState ()
 {
-
-    savedList.forEach(function (item)
-    {
-        taskList.innerHTML = "";
-
-        for (i = 0; i < savedList.length; i++)
-        {
-            let li = document.createElement('li');
-            li.textContent = savedList[i];
-            li.setAttribute('class', `item a${[i]}`);
-            taskList.appendChild(li);
-
-            let eraseBtn = document.createElement('button');
-            eraseBtn.textContent = 'Clear';
-            eraseBtn.setAttribute('class', 'eraser');
-            eraseBtn.setAttribute('onclick', `erase(${i})`);
-            li.appendChild(eraseBtn);
-        }
-
-    });
-
-
-
+    arrayItemList = localStorage.setItem("ALISTA", arrayItemList, JSON.stringify());
 }
 
-refresh();
-
-
-
-//BUTTON FUNCTIONS
-
-function erase (arrayN)
+//OPEN WINDOW
+window.onload = loadState;
+function loadState ()
 {
-    let erased = savedList.splice(arrayN, 1);
-    console.log(erased);
-
-    localStorage.setItem("ALISTA", arrayItemList, JSON.stringify());
-
+    arrayItemList = localStorage.getItem("ALISTA").split(',');
     refresh();
-
-    if (arrayItemList < 1)
+    if (arrayItemList[0] === '' || arrayItemList.length == 0)
     {
-        localStorage.clear("ALISTA", arrayItemList);
-        taskList.innerHTML = null;
-
+        console.log('bug');
+        localStorage.clear("ALISTA");
+        arrayItemList = [];
+        taskList.replaceChildren();
     }
 }
 
@@ -67,11 +34,9 @@ function getTaskInput ()
     // Coloca o que estava no input dentro da array
     arrayItemList.push(x);
 
-    localStorage.setItem("ALISTA", arrayItemList, JSON.stringify());
+    //localStorage.setItem("ALISTA", arrayItemList, JSON.stringify());
 
     //taskList.insertAdjacentHTML("beforeEnd", `<li class=item>${x}</li>`);
-
-
 
     let newItem = document.createElement('li');
     newItem.textContent = x;
@@ -84,7 +49,62 @@ function getTaskInput ()
     eraseBtn.setAttribute('onclick', `erase`);
     newItem.appendChild(eraseBtn);
 
+
+
 }
+
+
+
+
+//PRINT NA TELA
+function refresh ()
+{
+
+    arrayItemList.forEach(function (item)
+    {
+        taskList.innerHTML = "";
+
+        for (i = 0; i < arrayItemList.length; i++)
+        {
+            let li = document.createElement('li');
+            li.textContent = arrayItemList[i];
+            li.setAttribute('class', `item a${[i]}`);
+            taskList.appendChild(li);
+
+            let eraseBtn = document.createElement('button');
+            eraseBtn.textContent = 'Clear';
+            eraseBtn.setAttribute('class', 'eraser');
+            eraseBtn.setAttribute('onclick', `erase(${i})`);
+            li.appendChild(eraseBtn);
+        }
+
+    });
+
+}
+
+refresh();
+
+
+
+
+
+function erase (arrayN)
+{
+    let erased = arrayItemList.splice(arrayN, 1);
+    console.log(erased);
+
+    localStorage.setItem("ALISTA", arrayItemList, JSON.stringify());
+
+    refresh();
+
+    if (arrayItemList < 1)
+    {
+        localStorage.clear("ALISTA", arrayItemList);
+        taskList.innerHTML = null;
+    }
+}
+
+
 
 
 function clearItems ()
@@ -97,6 +117,17 @@ function clearItems ()
     localStorage.clear("ALISTA");
 }
 
+
+
+//CLICK ENTER
+taskInput.addEventListener('keypress', function (e)
+{
+    if (e.key === "Enter")
+    {
+        getTaskInput();
+        e.preventDefault();
+    }
+});
 
 
 
