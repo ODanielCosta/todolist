@@ -1,5 +1,5 @@
 let arrayItemList = [];
-let taskList = document.getElementById("taskList");
+let taskList1 = document.getElementById("taskList1");
 let itemInList = document.getElementsByClassName("item");
 let taskInput = document.getElementById('taskInput');
 
@@ -21,7 +21,7 @@ function loadState ()
     {
         localStorage.clear("ALISTA");
         arrayItemList = [];
-        taskList.replaceChildren();
+        taskList1.replaceChildren();
     }
 }
 
@@ -39,7 +39,7 @@ function getTaskInput ()
     let newItem = document.createElement('li');
     newItem.textContent = x;
     newItem.setAttribute('class', `item`);
-    taskList.appendChild(newItem);
+    taskList1.appendChild(newItem);
 
     let eraseBtn = document.createElement('button');
     eraseBtn.textContent = 'Clear';
@@ -63,14 +63,14 @@ function refresh ()
 
     arrayItemList.forEach(function (item)
     {
-        taskList.innerHTML = "";
+        taskList1.replaceChildren();
 
         for (i = 0; i < arrayItemList.length; i++)
         {
             let li = document.createElement('li');
             li.textContent = arrayItemList[i];
             li.setAttribute('class', `item a${[i]}`);
-            taskList.appendChild(li);
+            taskList1.appendChild(li);
 
             let eraseBtn = document.createElement('button');
             eraseBtn.textContent = 'Clear';
@@ -97,7 +97,7 @@ function erase (arrayN)
     if (arrayItemList < 1)
     {
         localStorage.clear("ALISTA", arrayItemList);
-        taskList.innerHTML = null;
+        taskList1.innerHTML = null;
     }
 }
 
@@ -106,18 +106,17 @@ function erase (arrayN)
 
 function clearItems ()
 {
-
     arrayItemList = [];
 
-    taskList.innerHTML = null;
+    taskList1.innerHTML = null;
 
     localStorage.clear("ALISTA");
 }
 
 
 
-//CLICK ENTER
-taskInput.addEventListener('keypress', function (e)
+//CLICK KEYS
+taskInput.addEventListener('keydown', function (e)
 {
     if (e.key === "Enter")
     {
@@ -125,6 +124,7 @@ taskInput.addEventListener('keypress', function (e)
         e.preventDefault();
         taskInput.value = '';
     }
+
 });
 
 
