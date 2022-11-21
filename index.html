@@ -16,6 +16,16 @@
         <br>
 
         <main>
+            <select id="semana" onchange="semanaSelector()">
+                <option value="" id="selectPlaceholder">Escolha o dia da semana</option>
+                <option value="segunda" id="segunda">Segunda-Feira</option>
+                <option value="terca" id="terca">Terça-Feira</option>
+                <option value="quarta" id="quarta">Quarta-Feira</option>
+                <option value="quinta" id="quinta">Quinta-Feira</option>
+                <option value="sexta" id="sexta">Sexta-Feira</option>
+                <option value="sabado" id="sabado">Sabado</option>
+                <option value="domingo" id="domingo">Domingo</option>
+            </select>
             <input type="text" id="taskInput" placeholder="Enter your task">
             <button onclick="getTaskInput()">Add Task</button>
             <button onclick="clearItems()">Clear Tasks</button>
@@ -39,7 +49,7 @@
         </div>
 
         <div class="Quinta">
-            <h2>Quarta</h2>
+            <h2>Quinta</h2>
             <ul id="taskList4"></ul>
         </div>
 
