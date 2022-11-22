@@ -21,8 +21,16 @@ let diaDaSemana = null;
 
 let taskList1 = document.getElementById("taskList1");
 let taskList2 = document.getElementById("taskList2");
+let taskList3 = document.getElementById("taskList3");
+let taskList4 = document.getElementById("taskList4");
+let taskList5 = document.getElementById("taskList5");
+let taskList6 = document.getElementById("taskList6");
+let taskList7 = document.getElementById("taskList7");
+
 let itemInList = document.getElementsByClassName("item");
 let taskInput = document.getElementById('taskInput');
+
+let itemZero = document.getElementsByClassName("a0");
 
 
 //CLOSE WINDOW
@@ -56,15 +64,18 @@ function loadState ()
     domingoItemList = localStorage.getItem("DOMINGO").split(',');
 
 
-    //CORRIGIR LI VAZIA
+    refresh();
 
+
+    //CORRIGIR LI VAZIA
     function correctList (currentArray, currentKey, list)
     {
         if (currentArray[0] === '' || currentArray.length == 0)
         {
             localStorage.clear(currentKey);
-            currentArray = [];
+            currentArray.shift();
             list.replaceChildren();
+
         }
     }
 
@@ -76,7 +87,7 @@ function loadState ()
     correctList(sabadoItemList, "SABADO", taskList6);
     correctList(domingoItemList, "DOMINGO", taskList7);
 
-    refresh();
+
 
 
 }
@@ -107,43 +118,43 @@ function getTaskInput ()
     {
         case 'segunda':
             segundaItemList.push(x);
-            createItem(taskList1, segundaItemList);
+            createItem(taskList1, segundaItemList, 'List1');
             localStorage.setItem("SEGUNDA", segundaItemList);
             break;
 
         case 'terca':
             tercaItemList.push(x);
-            createItem(taskList2, tercaItemList);
+            createItem(taskList2, tercaItemList, 'List2');
             localStorage.setItem("TERCA", tercaItemList);
             break;
 
         case 'quarta':
             quartaItemList.push(x);
-            createItem(taskList3, quartaItemList);
+            createItem(taskList3, quartaItemList, 'List3');
             localStorage.setItem("QUARTA", quartaItemList);
             break;
 
         case 'quinta':
             quintaItemList.push(x);
-            createItem(taskList4, quintaItemList);
+            createItem(taskList4, quintaItemList, 'List4');
             localStorage.setItem("QUINTA", quintaItemList);
             break;
 
         case 'sexta':
             sextaItemList.push(x);
-            createItem(taskList5, sextaItemList);
+            createItem(taskList5, sextaItemList, 'List5');
             localStorage.setItem("SEXTA", sextaItemList);
             break;
 
         case 'sabado':
             sabadoItemList.push(x);
-            createItem(taskList6, sabadoItemList);
+            createItem(taskList6, sabadoItemList, 'List6');
             localStorage.setItem("SABADO", sabadoItemList);
             break;
 
         case 'domingo':
             domingoItemList.push(x);
-            createItem(taskList7, domingoItemList);
+            createItem(taskList7, domingoItemList, 'List7');
             localStorage.setItem("DOMINGO", domingoItemList);
             break;
 
@@ -155,8 +166,10 @@ function getTaskInput ()
 
 
 
-    function createItem (y, z)
+    function createItem (y, z, v)
     {
+
+
         let newItem = document.createElement('li');
         newItem.textContent = x;
         newItem.setAttribute('class', `item`);
@@ -164,7 +177,7 @@ function getTaskInput ()
 
         let eraseBtn = document.createElement('button');
         eraseBtn.textContent = 'Clear';
-        eraseBtn.setAttribute('class', 'eraser');
+        eraseBtn.setAttribute('class', `eraser ${v}`);
         eraseBtn.setAttribute('onclick', `erase()`);
         newItem.appendChild(eraseBtn);
 
@@ -201,7 +214,7 @@ function getTaskInput ()
 function refresh ()
 {
 
-    function semanaRefresh (currentArray, list)
+    function semanaRefresh (currentArray, list, IdPaste)
     {
 
         currentArray.forEach(function (item)
@@ -217,22 +230,24 @@ function refresh ()
 
                 let eraseBtn = document.createElement('button');
                 eraseBtn.textContent = 'Clear';
-                eraseBtn.setAttribute('class', 'eraser');
+                eraseBtn.setAttribute('class', `eraser ${IdPaste}`);
                 eraseBtn.setAttribute('onclick', `erase(${i})`);
                 li.appendChild(eraseBtn);
+
             }
 
         });
 
     }
 
-    semanaRefresh(segundaItemList, taskList1);
-    semanaRefresh(tercaItemList, taskList2);
-    semanaRefresh(quartaItemList, taskList3);
-    semanaRefresh(quintaItemList, taskList4);
-    semanaRefresh(sextaItemList, taskList5);
-    semanaRefresh(sabadoItemList, taskList6);
-    semanaRefresh(domingoItemList, taskList7);
+    semanaRefresh(segundaItemList, taskList1, 'List1');
+    semanaRefresh(tercaItemList, taskList2, 'List2');
+    semanaRefresh(quartaItemList, taskList3, 'List3');
+    semanaRefresh(quintaItemList, taskList4, 'List4');
+    semanaRefresh(sextaItemList, taskList5, 'List5');
+    semanaRefresh(sabadoItemList, taskList6, 'List6');
+    semanaRefresh(domingoItemList, taskList7, 'List7');
+
 
 }
 
@@ -240,10 +255,20 @@ function refresh ()
 
 function erase (arrayN)
 {
+
+    //FIQUEI AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+    if (document.querySelectorAll('.segunda #taskList1 .item button').classList.contains('List1'))
+    {
+        console.log('HEY');
+
+    }
+
+
+
     let erased = arrayItemList.splice(arrayN, 1);
     console.log(erased);
 
-    localStorage.setItem("ALISTA", arrayItemList, JSON.stringify());
+    localStorage.setItem("ALISTA", arrayItemList);
 
     refresh();
 
