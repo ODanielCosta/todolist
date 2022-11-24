@@ -178,12 +178,42 @@ function getTaskInput ()
         let eraseBtn = document.createElement('button');
         eraseBtn.textContent = 'Clear';
         eraseBtn.setAttribute('class', `eraser ${v}`);
-        eraseBtn.setAttribute('onclick', `erase()`);
+        
         newItem.appendChild(eraseBtn);
 
         for (i = 0; i < z.length; i++)
         {
             eraseBtn.setAttribute('onclick', `erase(${i})`);
+        }
+
+        if(y === taskList1){
+
+            eraseBtn.setAttribute('onclick', `erase1()`);
+
+        }else if(y === taskList2){
+
+            eraseBtn.setAttribute('onclick', `erase2()`);
+
+        }else if(y === taskList3){
+
+            eraseBtn.setAttribute('onclick', `erase3()`);
+            
+        }else if(y === taskList4){
+
+            eraseBtn.setAttribute('onclick', `erase4()`);
+            
+        }else if(y === taskList5){
+
+            eraseBtn.setAttribute('onclick', `erase5()`);
+            
+        }else if(y === taskList6){
+
+            eraseBtn.setAttribute('onclick', `erase6()`);
+            
+        }else if(y === taskList7){
+
+            eraseBtn.setAttribute('onclick', `erase7()`);
+            
         }
     }
 
@@ -227,14 +257,46 @@ function refresh ()
                 li.textContent = currentArray[i];
                 li.setAttribute('class', `item a${[i]}`);
                 list.appendChild(li);
-
+                
                 let eraseBtn = document.createElement('button');
                 eraseBtn.textContent = 'Clear';
                 eraseBtn.setAttribute('class', `eraser ${IdPaste}`);
-                eraseBtn.setAttribute('onclick', `erase(${i})`);
+                //eraseBtn.setAttribute('onclick', `erase${eraseIdReciver}(${i})`);
                 li.appendChild(eraseBtn);
 
+                if(list === taskList1){
+
+                    eraseBtn.setAttribute('onclick', `erase1(${i})`);
+        
+                }else if(list=== taskList2){
+        
+                    eraseBtn.setAttribute('onclick', `erase2(${i})`);
+        
+                }else if(list === taskList3){
+        
+                    eraseBtn.setAttribute('onclick', `erase3(${i})`);
+                    
+                }else if(list === taskList4){
+        
+                    eraseBtn.setAttribute('onclick', `erase4(${i})`);
+                    
+                }else if(list === taskList5){
+        
+                    eraseBtn.setAttribute('onclick', `erase5(${i})`);
+                    
+                }else if(list === taskList6){
+        
+                    eraseBtn.setAttribute('onclick', `erase6(${i})`);
+                    
+                }else if(list === taskList7){
+        
+                    eraseBtn.setAttribute('onclick', `erase7(${i})`);
+                    
+                }
+
             }
+
+            
 
         });
 
@@ -252,30 +314,119 @@ function refresh ()
 }
 
 
+//ERASE SECTION
 
-function erase (arrayN)
-{
+function erase1 (arrayN)
+{   
+    
+    let erased = segundaItemList.splice(arrayN, 1);
 
-    //FIQUEI AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
-    if (document.querySelectorAll('.segunda #taskList1 .item button').classList.contains('List1'))
+    localStorage.setItem("List1", segundaItemList);
+
+    
+    refresh();
+
+    if (segundaItemList < 1)
     {
-        console.log('HEY');
-
+        localStorage.clear("List1", segundaItemList);
+        taskList1.innerHTML = null;
     }
+}
 
+function erase2 (arrayN)
+{   
+    
+    let erased = tercaItemList.splice(arrayN, 1);
 
-
-    let erased = arrayItemList.splice(arrayN, 1);
-    console.log(erased);
-
-    localStorage.setItem("ALISTA", arrayItemList);
+    localStorage.setItem("List2", tercaItemList);
 
     refresh();
 
-    if (arrayItemList < 1)
+    if (tercaItemList < 1)
     {
-        localStorage.clear("ALISTA", arrayItemList);
-        taskList1.innerHTML = null;
+        localStorage.clear("List2", tercaItemList);
+        taskList2.innerHTML = null;
+    }
+}
+
+function erase3 (arrayN)
+{   
+    
+    let erased = quartaItemList.splice(arrayN, 1);
+
+    localStorage.setItem("List3", quartaItemList);
+
+    refresh();
+
+    if (quartaItemList < 1)
+    {
+        localStorage.clear("List3", quartaItemList);
+        taskList3.innerHTML = null;
+    }
+}
+
+
+function erase4 (arrayN)
+{   
+    
+    let erased = quintaItemList.splice(arrayN, 1);
+
+    localStorage.setItem("List4", quintaItemList);
+
+    refresh();
+
+    if (quintaItemList < 1)
+    {
+        localStorage.clear("List4", quintaItemList);
+        taskList4.innerHTML = null;
+    }
+}
+
+function erase5 (arrayN)
+{   
+    
+    let erased = sextaItemList.splice(arrayN, 1);
+
+    localStorage.setItem("List5", sextaItemList);
+
+    refresh();
+
+    if (sextaItemList < 1)
+    {
+        localStorage.clear("List5", sextaItemList);
+        taskList5.innerHTML = null;
+    }
+}
+
+function erase6 (arrayN)
+{   
+    
+    let erased = sabadoItemList.splice(arrayN, 1);
+
+    localStorage.setItem("List6", sabadoItemList);
+
+    refresh();
+
+    if (sabadoItemList < 1)
+    {
+        localStorage.clear("List6", sabadoItemList);
+        taskList6.innerHTML = null;
+    }
+}
+
+function erase7 (arrayN)
+{   
+    
+    let erased = domingoItemList.splice(arrayN, 1);
+
+    localStorage.setItem("List7", domingoItemList);
+
+    refresh();
+
+    if (domingoItemList < 1)
+    {
+        localStorage.clear("List7", domingoItemList);
+        taskList7.innerHTML = null;
     }
 }
 
