@@ -8,16 +8,9 @@ let sextaItemList = [];
 let sabadoItemList = [];
 let domingoItemList = [];
 
-let semana = document.getElementById("semana");
-let segunda = document.getElementById("segunda");
-let terca = document.getElementById("terca");
-let quarta = document.getElementById("quarta");
-let quinta = document.getElementById("quinta");
-let sexta = document.getElementById("sexta");
-let sabado = document.getElementById("sabado");
-let domingo = document.getElementById("domingo");
-
 let diaDaSemana = null;
+
+let segundaBox = document.querySelectorAll("body .segunda");
 
 let taskList1 = document.getElementById("taskList1");
 let taskList2 = document.getElementById("taskList2");
@@ -48,6 +41,10 @@ function saveState ()
     domingoItemList = localStorage.setItem("DOMINGO", domingoItemList);
 
 }
+
+
+/////////////////////////////////////////////////////
+
 
 //OPEN WINDOW
 window.onload = loadState;
@@ -87,12 +84,7 @@ function loadState ()
     correctList(sabadoItemList, "SABADO", taskList6);
     correctList(domingoItemList, "DOMINGO", taskList7);
 
-
-
-
 }
-
-
 
 
 
@@ -103,6 +95,45 @@ function semanaSelector ()
 }
 
 
+/*
+segundaBox[0].addEventListener("click",function(){
+
+    let newInput= document.createElement('input');
+    newInput.setAttribute("type","text");
+    newInput.setAttribute("id","taskInput");
+    newInput.setAttribute("placeholder","Enter your task");
+    taskList1.appendChild(newInput);
+
+});*/
+
+
+
+let segundaBtn = segundaBox[0].addEventListener("click",() => showInput(taskList1, "segunda"),{once : true});
+
+
+function showInput(inputPlace, diaSemana){
+
+    let newInput= document.createElement('input');
+    newInput.setAttribute("type","text");
+    newInput.setAttribute("id","taskInput");
+    newInput.setAttribute("placeholder","Enter your task");
+    inputPlace.appendChild(newInput);
+    newInput.focus();
+
+    diaDaSemana = diaSemana;
+    taskInput = newInput;
+
+    return taskInput;
+};
+
+
+
+
+
+
+
+
+
 
 
 
@@ -110,9 +141,7 @@ function getTaskInput ()
 {
     //Vai buscar valor do input e mete em "x"
     let x = document.getElementById("taskInput").value;
-    // Coloca o que estava no input dentro da array
 
-    //arrayItemList.push(x);
 
     switch (diaDaSemana)
     {
@@ -159,8 +188,6 @@ function getTaskInput ()
             break;
 
     }
-
-    //localStorage.setItem("ALISTA", arrayItemList);
 
 
 
@@ -217,24 +244,6 @@ function getTaskInput ()
         }
     }
 
-
-    /*
-        let newItem = document.createElement('li');
-        newItem.textContent = x;
-        newItem.setAttribute('class', `item`);
-        taskList1.appendChild(newItem);
-    
-        let eraseBtn = document.createElement('button');
-        eraseBtn.textContent = 'Clear';
-        eraseBtn.setAttribute('class', 'eraser');
-        eraseBtn.setAttribute('onclick', `erase()`);
-        newItem.appendChild(eraseBtn);
-        //IDENTIFICA NOVA LI
-        for (i = 0; i < arrayItemList.length; i++)
-        {
-            eraseBtn.setAttribute('onclick', `erase(${i})`);
-        }
-    */
 }
 
 
