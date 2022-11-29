@@ -10,7 +10,9 @@ let domingoItemList = [];
 
 let diaDaSemana = null;
 
-let segundaBox = document.querySelectorAll("body .segunda");
+let hitBox = document.querySelectorAll(".semana h2");
+
+let taskInput1 = document.getElementById("taskInput1");
 
 let taskList1 = document.getElementById("taskList1");
 let taskList2 = document.getElementById("taskList2");
@@ -89,11 +91,11 @@ function loadState ()
 
 
 //BUSCA DIA DA SEMANA
-function semanaSelector ()
+/*function semanaSelector ()
 {
     diaDaSemana = semana.value;
 }
-
+*/
 
 /*
 segundaBox[0].addEventListener("click",function(){
@@ -108,27 +110,54 @@ segundaBox[0].addEventListener("click",function(){
 
 
 
-let segundaBtn = segundaBox[0].addEventListener("click",() => showInput(taskList1, "segunda"),{once : true});
+hitBox[0].addEventListener("click", () => showInput(taskInput1, "segunda"));
+hitBox[1].addEventListener("click", () => showInput(taskInput2, "terca"));
+hitBox[2].addEventListener("click", () => showInput(taskInput3, "quarta"));
+hitBox[3].addEventListener("click", () => showInput(taskInput4, "quinta"));
+hitBox[4].addEventListener("click", () => showInput(taskInput5, "sexta"));
+hitBox[5].addEventListener("click", () => showInput(taskInput6, "sabado"));
+hitBox[6].addEventListener("click", () => showInput(taskInput7, "domingo"));
 
 
-function showInput(inputPlace, diaSemana){
 
-    let newInput= document.createElement('input');
-    newInput.setAttribute("type","text");
-    newInput.setAttribute("id","taskInput");
-    newInput.setAttribute("placeholder","Enter your task");
-    inputPlace.appendChild(newInput);
-    newInput.focus();
+function showInput (currentInput, currentDia)
+{
 
-    diaDaSemana = diaSemana;
-    taskInput = newInput;
+    currentInput.style.display = "block";
+
+    currentInput.focus();
+
+    inputClick(currentInput);
+
+    diaDaSemana = currentDia;
 
     return taskInput;
+
+
 };
 
 
 
 
+//CLICK KEYS
+
+function inputClick (currentInput)
+{
+
+    currentInput.addEventListener("keypress", function (event)
+    {
+
+        if (event.key === "Enter")
+        {
+            getTaskInput();
+            event.preventDefault();
+            currentInput.value = '';
+            currentInput.style.display = "none";
+        }
+
+    });
+
+}
 
 
 
@@ -140,48 +169,56 @@ function showInput(inputPlace, diaSemana){
 function getTaskInput ()
 {
     //Vai buscar valor do input e mete em "x"
-    let x = document.getElementById("taskInput").value;
+    let x = '';
 
 
     switch (diaDaSemana)
     {
         case 'segunda':
+            x = taskInput1.value;
             segundaItemList.push(x);
+            segundaItemList = segundaItemList.filter(Boolean);//AQUIIIIIIIIIIII
             createItem(taskList1, segundaItemList, 'List1');
             localStorage.setItem("SEGUNDA", segundaItemList);
             break;
 
         case 'terca':
+            x = taskInput2.value;
             tercaItemList.push(x);
             createItem(taskList2, tercaItemList, 'List2');
             localStorage.setItem("TERCA", tercaItemList);
             break;
 
         case 'quarta':
+            x = taskInput3.value;
             quartaItemList.push(x);
             createItem(taskList3, quartaItemList, 'List3');
             localStorage.setItem("QUARTA", quartaItemList);
             break;
 
         case 'quinta':
+            x = taskInput4.value;
             quintaItemList.push(x);
             createItem(taskList4, quintaItemList, 'List4');
             localStorage.setItem("QUINTA", quintaItemList);
             break;
 
         case 'sexta':
+            x = taskInput5.value;
             sextaItemList.push(x);
             createItem(taskList5, sextaItemList, 'List5');
             localStorage.setItem("SEXTA", sextaItemList);
             break;
 
         case 'sabado':
+            x = taskInput6.value;
             sabadoItemList.push(x);
             createItem(taskList6, sabadoItemList, 'List6');
             localStorage.setItem("SABADO", sabadoItemList);
             break;
 
         case 'domingo':
+            x = taskInput7.value;
             domingoItemList.push(x);
             createItem(taskList7, domingoItemList, 'List7');
             localStorage.setItem("DOMINGO", domingoItemList);
@@ -197,15 +234,17 @@ function getTaskInput ()
     {
 
 
+
         let newItem = document.createElement('li');
         newItem.textContent = x;
         newItem.setAttribute('class', `item`);
         y.appendChild(newItem);
 
+
         let eraseBtn = document.createElement('button');
         eraseBtn.textContent = 'Clear';
         eraseBtn.setAttribute('class', `eraser ${v}`);
-        
+
         newItem.appendChild(eraseBtn);
 
         for (i = 0; i < z.length; i++)
@@ -213,36 +252,46 @@ function getTaskInput ()
             eraseBtn.setAttribute('onclick', `erase(${i})`);
         }
 
-        if(y === taskList1){
+        if (y === taskList1)
+        {
 
             eraseBtn.setAttribute('onclick', `erase1()`);
 
-        }else if(y === taskList2){
+        } else if (y === taskList2)
+        {
 
             eraseBtn.setAttribute('onclick', `erase2()`);
 
-        }else if(y === taskList3){
+        } else if (y === taskList3)
+        {
 
             eraseBtn.setAttribute('onclick', `erase3()`);
-            
-        }else if(y === taskList4){
+
+        } else if (y === taskList4)
+        {
 
             eraseBtn.setAttribute('onclick', `erase4()`);
-            
-        }else if(y === taskList5){
+
+        } else if (y === taskList5)
+        {
 
             eraseBtn.setAttribute('onclick', `erase5()`);
-            
-        }else if(y === taskList6){
+
+        } else if (y === taskList6)
+        {
 
             eraseBtn.setAttribute('onclick', `erase6()`);
-            
-        }else if(y === taskList7){
+
+        } else if (y === taskList7)
+        {
 
             eraseBtn.setAttribute('onclick', `erase7()`);
-            
+
         }
     }
+
+
+
 
 }
 
@@ -266,46 +315,53 @@ function refresh ()
                 li.textContent = currentArray[i];
                 li.setAttribute('class', `item a${[i]}`);
                 list.appendChild(li);
-                
+
                 let eraseBtn = document.createElement('button');
                 eraseBtn.textContent = 'Clear';
                 eraseBtn.setAttribute('class', `eraser ${IdPaste}`);
                 //eraseBtn.setAttribute('onclick', `erase${eraseIdReciver}(${i})`);
                 li.appendChild(eraseBtn);
 
-                if(list === taskList1){
+                if (list === taskList1)
+                {
 
                     eraseBtn.setAttribute('onclick', `erase1(${i})`);
-        
-                }else if(list=== taskList2){
-        
+
+                } else if (list === taskList2)
+                {
+
                     eraseBtn.setAttribute('onclick', `erase2(${i})`);
-        
-                }else if(list === taskList3){
-        
+
+                } else if (list === taskList3)
+                {
+
                     eraseBtn.setAttribute('onclick', `erase3(${i})`);
-                    
-                }else if(list === taskList4){
-        
+
+                } else if (list === taskList4)
+                {
+
                     eraseBtn.setAttribute('onclick', `erase4(${i})`);
-                    
-                }else if(list === taskList5){
-        
+
+                } else if (list === taskList5)
+                {
+
                     eraseBtn.setAttribute('onclick', `erase5(${i})`);
-                    
-                }else if(list === taskList6){
-        
+
+                } else if (list === taskList6)
+                {
+
                     eraseBtn.setAttribute('onclick', `erase6(${i})`);
-                    
-                }else if(list === taskList7){
-        
+
+                } else if (list === taskList7)
+                {
+
                     eraseBtn.setAttribute('onclick', `erase7(${i})`);
-                    
+
                 }
 
             }
 
-            
+
 
         });
 
@@ -326,13 +382,13 @@ function refresh ()
 //ERASE SECTION
 
 function erase1 (arrayN)
-{   
-    
+{
+
     let erased = segundaItemList.splice(arrayN, 1);
 
     localStorage.setItem("List1", segundaItemList);
 
-    
+
     refresh();
 
     if (segundaItemList < 1)
@@ -343,8 +399,8 @@ function erase1 (arrayN)
 }
 
 function erase2 (arrayN)
-{   
-    
+{
+
     let erased = tercaItemList.splice(arrayN, 1);
 
     localStorage.setItem("List2", tercaItemList);
@@ -359,8 +415,8 @@ function erase2 (arrayN)
 }
 
 function erase3 (arrayN)
-{   
-    
+{
+
     let erased = quartaItemList.splice(arrayN, 1);
 
     localStorage.setItem("List3", quartaItemList);
@@ -376,8 +432,8 @@ function erase3 (arrayN)
 
 
 function erase4 (arrayN)
-{   
-    
+{
+
     let erased = quintaItemList.splice(arrayN, 1);
 
     localStorage.setItem("List4", quintaItemList);
@@ -392,8 +448,8 @@ function erase4 (arrayN)
 }
 
 function erase5 (arrayN)
-{   
-    
+{
+
     let erased = sextaItemList.splice(arrayN, 1);
 
     localStorage.setItem("List5", sextaItemList);
@@ -408,8 +464,8 @@ function erase5 (arrayN)
 }
 
 function erase6 (arrayN)
-{   
-    
+{
+
     let erased = sabadoItemList.splice(arrayN, 1);
 
     localStorage.setItem("List6", sabadoItemList);
@@ -424,8 +480,8 @@ function erase6 (arrayN)
 }
 
 function erase7 (arrayN)
-{   
-    
+{
+
     let erased = domingoItemList.splice(arrayN, 1);
 
     localStorage.setItem("List7", domingoItemList);
@@ -473,17 +529,14 @@ function clearItems ()
 
 
 
-//CLICK KEYS
-taskInput.addEventListener('keydown', function (e)
-{
-    if (e.key === "Enter")
-    {
-        getTaskInput();
-        e.preventDefault();
-        taskInput.value = '';
-    }
 
-});
+
+
+
+
+
+
+
 
 
 
