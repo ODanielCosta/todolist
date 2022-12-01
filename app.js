@@ -12,7 +12,11 @@ let diaDaSemana = null;
 
 let hitBox = document.querySelectorAll(".semana h2");
 
+let taskInput = document.querySelectorAll('.taskInput');
+taskInput = Array.from(taskInput)
 let taskInput1 = document.getElementById("taskInput1");
+
+let active = "active";
 
 let taskList1 = document.getElementById("taskList1");
 let taskList2 = document.getElementById("taskList2");
@@ -23,7 +27,6 @@ let taskList6 = document.getElementById("taskList6");
 let taskList7 = document.getElementById("taskList7");
 
 let itemInList = document.getElementsByClassName("item");
-let taskInput = document.getElementById('taskInput');
 
 let itemZero = document.getElementsByClassName("a0");
 
@@ -90,24 +93,6 @@ function loadState ()
 
 
 
-//BUSCA DIA DA SEMANA
-/*function semanaSelector ()
-{
-    diaDaSemana = semana.value;
-}
-*/
-
-/*
-segundaBox[0].addEventListener("click",function(){
-
-    let newInput= document.createElement('input');
-    newInput.setAttribute("type","text");
-    newInput.setAttribute("id","taskInput");
-    newInput.setAttribute("placeholder","Enter your task");
-    taskList1.appendChild(newInput);
-
-});*/
-
 
 
 hitBox[0].addEventListener("click", () => showInput(taskInput1, "segunda"));
@@ -121,43 +106,71 @@ hitBox[6].addEventListener("click", () => showInput(taskInput7, "domingo"));
 
 
 function showInput (currentInput, currentDia)
-{
+{    
 
+    for(i = 0;i < taskInput.length; i++ ){
+        if(taskInput[i].id === currentInput.id){
+            //SELECTED
+            let selected = currentInput.id;
+            console.log(selected)
+
+        }else if(taskInput[i].id != currentInput.id){
+            //NOT SELECTED
+            console.log("Not Selected");//AQUIIIIIIIIIIIIIIIIIIIIIIIIII
+        }
+    }
+    
+    
+    
     currentInput.style.display = "block";
-
-    currentInput.focus();
-
-    inputClick(currentInput);
 
     diaDaSemana = currentDia;
 
-    return taskInput;
-
-
-};
-
-
-
-
-//CLICK KEYS
-
-function inputClick (currentInput)
-{
+    currentInput.focus();
 
     currentInput.addEventListener("keypress", function (event)
     {
-
         if (event.key === "Enter")
         {
             getTaskInput();
-            event.preventDefault();
-            currentInput.value = '';
-            currentInput.style.display = "none";
+            currentInput.value = '';            
         }
 
-    });
+        
+    }) 
 
-}
+    //Escape key (CLEAR ALL INPUTS)
+    document.onkeydown = function(evt) {
+        evt = evt || window.event;
+        if (evt.keyCode == 27 && currentInput.value === '') {
+
+            taskInput = Array.from(taskInput)
+            for(i = 0;i < taskInput.length; i++){
+                taskInput[i].style.display = "none";
+            }            
+            currentInput.value = '';
+
+            
+        }
+    };
+
+    /*checkCurrentInput(currentInput);
+    
+    function checkCurrentInput(a){
+        
+        let oldInput = currentInput
+
+    if(currentInput != oldInput){
+        console.log("PASSOU");
+    }
+
+    }*/
+   
+   
+    
+
+    
+};
 
 
 
@@ -177,7 +190,7 @@ function getTaskInput ()
         case 'segunda':
             x = taskInput1.value;
             segundaItemList.push(x);
-            segundaItemList = segundaItemList.filter(Boolean);//AQUIIIIIIIIIIII
+            segundaItemList = segundaItemList.filter(Boolean);
             createItem(taskList1, segundaItemList, 'List1');
             localStorage.setItem("SEGUNDA", segundaItemList);
             break;
@@ -185,6 +198,7 @@ function getTaskInput ()
         case 'terca':
             x = taskInput2.value;
             tercaItemList.push(x);
+            tercaItemList = tercaItemList.filter(Boolean);
             createItem(taskList2, tercaItemList, 'List2');
             localStorage.setItem("TERCA", tercaItemList);
             break;
@@ -192,6 +206,7 @@ function getTaskInput ()
         case 'quarta':
             x = taskInput3.value;
             quartaItemList.push(x);
+            quartaItemList = quartaItemList.filter(Boolean);
             createItem(taskList3, quartaItemList, 'List3');
             localStorage.setItem("QUARTA", quartaItemList);
             break;
@@ -199,6 +214,7 @@ function getTaskInput ()
         case 'quinta':
             x = taskInput4.value;
             quintaItemList.push(x);
+            quintaItemList = quintaItemList.filter(Boolean);
             createItem(taskList4, quintaItemList, 'List4');
             localStorage.setItem("QUINTA", quintaItemList);
             break;
@@ -206,6 +222,7 @@ function getTaskInput ()
         case 'sexta':
             x = taskInput5.value;
             sextaItemList.push(x);
+            sextaItemList = sextaItemList.filter(Boolean);
             createItem(taskList5, sextaItemList, 'List5');
             localStorage.setItem("SEXTA", sextaItemList);
             break;
@@ -213,6 +230,7 @@ function getTaskInput ()
         case 'sabado':
             x = taskInput6.value;
             sabadoItemList.push(x);
+            sabadoItemList = sabadoItemList.filter(Boolean);
             createItem(taskList6, sabadoItemList, 'List6');
             localStorage.setItem("SABADO", sabadoItemList);
             break;
@@ -220,6 +238,7 @@ function getTaskInput ()
         case 'domingo':
             x = taskInput7.value;
             domingoItemList.push(x);
+            domingoItemList = domingoItemList.filter(Boolean);
             createItem(taskList7, domingoItemList, 'List7');
             localStorage.setItem("DOMINGO", domingoItemList);
             break;
