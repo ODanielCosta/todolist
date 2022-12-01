@@ -1,23 +1,53 @@
-#taskList{
-    width:100%;
-    padding-left: 0;
-}
-
-.item{
+.semana{
     display: flex;
-    background-color: lightgrey;
-    padding: 5px 0px 5px 5px;
-    margin: 2px 0;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
-.eraser{
-    margin-right: 5px;
+.box{
+    width: 200px;
+    margin: 0 40px 40px 0;
+    padding:0 0 0 20px ;
+    border-left: 1px solid #000;
+    border-top: 1px solid #000;
+}
+
+
+
+.taskList{
+    padding-left: 0;
+
 }
 
 h2{
     font-size: 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "Helvetica Neue",Helvetica,sans;
+}
+
+
+.item{
+    display: flex;
+    border-bottom: 1px solid rgb(187, 187, 187);
+    padding: 10px 50px 2px 5px;
+    margin: 2px 0;
+    justify-content: space-between;
+    line-height: 1.5;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+}
+
+.eraser{
+    height: 25px;
+    position:absolute;
+    top:auto;
+    right:0;
+    bottom: 0;
+    background-color: #fff ;
+    border: 1px solid rgb(187, 187, 187);
+    border-bottom: none;
+    font-family: "Helvetica Neue",Helvetica,sans;
+    
 }
 
 .semana h2{

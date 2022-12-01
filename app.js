@@ -1,5 +1,3 @@
-//let arrayItemList = [];
-
 let segundaItemList = [];
 let tercaItemList = [];
 let quartaItemList = [];
@@ -16,8 +14,6 @@ let taskInput = document.querySelectorAll('.taskInput');
 taskInput = Array.from(taskInput)
 let taskInput1 = document.getElementById("taskInput1");
 
-let active = "active";
-
 let taskList1 = document.getElementById("taskList1");
 let taskList2 = document.getElementById("taskList2");
 let taskList3 = document.getElementById("taskList3");
@@ -31,11 +27,14 @@ let itemInList = document.getElementsByClassName("item");
 let itemZero = document.getElementsByClassName("a0");
 
 
+
+
+
+
 //CLOSE WINDOW
 window.onbeforeunload = saveState;
 function saveState ()
 {
-    //  arrayItemList = localStorage.setItem("ALISTA", arrayItemList, JSON.stringify());
 
     segundaItemList = localStorage.setItem("SEGUNDA", segundaItemList);
     tercaItemList = localStorage.setItem("TERCA", tercaItemList);
@@ -55,7 +54,6 @@ function saveState ()
 window.onload = loadState;
 function loadState ()
 {
-    // arrayItemList = localStorage.getItem("ALISTA").split(',');
 
     segundaItemList = localStorage.getItem("SEGUNDA").split(',');
     tercaItemList = localStorage.getItem("TERCA").split(',');
@@ -90,6 +88,8 @@ function loadState ()
     correctList(domingoItemList, "DOMINGO", taskList7);
 
 }
+
+
 
 
 
@@ -171,8 +171,6 @@ function showInput (currentInput, currentDia)
 function getTaskInput ()
 {
 
-
-
     //Vai buscar valor do input e mete em "x"
     let x = null;
 
@@ -245,7 +243,7 @@ function getTaskInput ()
     {
         //BUG FIX
         if(x === ''){
-            return console.log("");
+            return null;
         }
             
         let newItem = document.createElement('li');
@@ -512,7 +510,6 @@ function erase7 (arrayN)
 
 function clearItems ()
 {
-    //arrayItemList = [];
 
     segundaItemList = [];
     tercaItemList = [];
