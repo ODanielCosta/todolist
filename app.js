@@ -110,13 +110,15 @@ function showInput (currentInput, currentDia)
 
     for(i = 0;i < taskInput.length; i++ ){
         if(taskInput[i].id === currentInput.id){
+
             //SELECTED
-            let selected = currentInput.id;
-            console.log(selected)
+            taskInput[i].classList.add("selected");
 
         }else if(taskInput[i].id != currentInput.id){
+
             //NOT SELECTED
-            console.log("Not Selected");//AQUIIIIIIIIIIIIIIIIIIIIIIIIII
+            taskInput[i].classList.add("Notselected");
+            taskInput[i].style.display = "none";
         }
     }
     
@@ -133,7 +135,7 @@ function showInput (currentInput, currentDia)
         if (event.key === "Enter")
         {
             getTaskInput();
-            currentInput.value = '';            
+            currentInput.value = null;            
         }
 
         
@@ -142,30 +144,17 @@ function showInput (currentInput, currentDia)
     //Escape key (CLEAR ALL INPUTS)
     document.onkeydown = function(evt) {
         evt = evt || window.event;
-        if (evt.keyCode == 27 && currentInput.value === '') {
+        if (evt.keyCode == 27) {
 
             taskInput = Array.from(taskInput)
             for(i = 0;i < taskInput.length; i++){
                 taskInput[i].style.display = "none";
             }            
-            currentInput.value = '';
+            currentInput.value = null;
 
             
         }
-    };
-
-    /*checkCurrentInput(currentInput);
-    
-    function checkCurrentInput(a){
-        
-        let oldInput = currentInput
-
-    if(currentInput != oldInput){
-        console.log("PASSOU");
-    }
-
-    }*/
-   
+    };  
    
     
 
@@ -181,8 +170,11 @@ function showInput (currentInput, currentDia)
 
 function getTaskInput ()
 {
+
+
+
     //Vai buscar valor do input e mete em "x"
-    let x = '';
+    let x = null;
 
 
     switch (diaDaSemana)
@@ -251,9 +243,11 @@ function getTaskInput ()
 
     function createItem (y, z, v)
     {
-
-
-
+        //BUG FIX
+        if(x === ''){
+            return console.log("");
+        }
+            
         let newItem = document.createElement('li');
         newItem.textContent = x;
         newItem.setAttribute('class', `item`);
@@ -308,7 +302,6 @@ function getTaskInput ()
 
         }
     }
-
 
 
 
