@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
     <head>
         <meta charset="UTF-8">
@@ -13,11 +13,21 @@
 
     <body>
 
+        <header>
+            <img id="site-logo" src="img/logo_black.svg" alt="Website Logo">
+            <div class="site-menu">
+                <button class="menu-btn">Tarefas Semanais</button>
+                <button class="menu-btn">Tarefas Mensais</button>
+                <button class="menu-btn">Sobre</button>
+                <button class="menu-btn">FAQ</button>
+            </div>
+        </header>
+
         <br>
 
         <main>
-            <button onclick="clearItems()">Clear Tasks</button>
-        </main>
+            <button class="clear-all" onclick="clearItems()">Limpar tarefas</button>
+        
         <br>
 
         <div class="semana">
@@ -65,6 +75,8 @@
             </div>
 
         </div>
+
+    </main>
 
 
     </body>

@@ -253,7 +253,7 @@ function getTaskInput ()
 
 
         let eraseBtn = document.createElement('button');
-        eraseBtn.textContent = 'Clear';
+        eraseBtn.textContent = 'Feito';
         eraseBtn.setAttribute('class', `eraser ${v}`);
 
         newItem.appendChild(eraseBtn);
@@ -327,7 +327,7 @@ function refresh ()
                 list.appendChild(li);
 
                 let eraseBtn = document.createElement('button');
-                eraseBtn.textContent = 'Clear';
+                eraseBtn.textContent = 'Feito';
                 eraseBtn.setAttribute('class', `eraser ${IdPaste}`);
                 //eraseBtn.setAttribute('onclick', `erase${eraseIdReciver}(${i})`);
                 li.appendChild(eraseBtn);
