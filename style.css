@@ -36,6 +36,12 @@ header{
     font-family: "Helvetica Neue",Helvetica,sans;
 }
 
+.login-menu{
+    position: absolute;
+    top: 20px;
+    right: 70px;
+}
+
 
 /*TO-DO*/
 
@@ -66,9 +72,10 @@ main{
 
 }
 
-h2{
+.weekday-title,.achiev-title{
     font-size: 20px;
     font-family: "Helvetica Neue",Helvetica,sans;
+    font-weight: bold;
 }
 
 

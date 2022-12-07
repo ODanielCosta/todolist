@@ -8,7 +8,7 @@ let domingoItemList = [];
 
 let diaDaSemana = null;
 
-let hitBox = document.querySelectorAll(".semana h2");
+let hitBox = document.querySelectorAll(".semana p");
 
 let taskInput = document.querySelectorAll('.taskInput');
 taskInput = Array.from(taskInput)
