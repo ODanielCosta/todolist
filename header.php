@@ -12,7 +12,9 @@
     </head>
 
         <header>
-            <img id="site-logo" src="img/logo_black.svg" alt="Website Logo">
+            <a href="index.php">
+                <img id="site-logo" src="img/logo_black.svg" alt="Website Logo">
+            </a>            
             <div class="site-menu">
                 <button class="menu-btn">Tarefas Semanais</button>
                 <button class="menu-btn">Tarefas Mensais</button>
