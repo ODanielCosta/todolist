@@ -15,7 +15,8 @@ header{
     border-bottom: 1px solid #000;
     display: flex;
     position: fixed;
-    top: 0;    
+    top: 0;  
+    z-index: 9;  
 }
 
 #site-logo{
@@ -44,7 +45,52 @@ header{
 }
 
 
-/*TO-DO*/
+/*********************************************/
+/*INDEX*/
+
+#container{
+    margin-top: 60px;
+    height: 100vh;
+    position: relative;
+    background-color: #000;
+}
+
+.page-title{
+    font-family: "Helvetica Neue",Helvetica,sans;
+    font-size: 60px;
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    color: #fff;
+}
+
+.page-slogan{
+    color: #fff;
+    font-size: 25px;
+    font-family: "Helvetica Neue",Helvetica,sans;
+    position: absolute;
+    top: 37%;
+    left: 10%;
+}
+
+.date #year,
+.date #hour{
+    color: #fff;
+    font-family: "Helvetica Neue",Helvetica,sans;
+    font-size: 60px;
+}
+
+
+/*POR APAGAR*/
+#index-img{
+    width: 44%;
+    position: absolute;
+    top: 8%;
+    left: 13%;
+}
+/****/
+
+/*SEMANAL*/
 
 main{
     margin: 60px 20px 20px 20px;
