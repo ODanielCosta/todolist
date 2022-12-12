@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     <script src="app.js" type="text/javascript" defer></script>
-    <script src="date.js" type="text/javascript" defer></script>
 </head>
 
 <header>

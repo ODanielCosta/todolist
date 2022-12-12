@@ -2,8 +2,8 @@
 
 $serverName = "localhost";
 $dBUsername = "root";
-$dBPassword = "root";
-$dBName = "toDoListSite";
+$dBPassword = "";
+$dBName = "tothepointweb";
 
 
 $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);

@@ -2,7 +2,7 @@
 include_once 'header.php';
 
 ?>
-
+<script src="date.js" type="text/javascript" defer></script>
 <body>
     <div id="container">
         <div class="date">
