@@ -17,12 +17,12 @@ if (isset($_POST["submit"])) {
     }
 
     if (invalidUid($username) !== false) {
-        header("location: ../signup.php?error=emptyinput");
+        header("location: ../signup.php?error=invalidUid");
         exit();
     }
 
     if (invalidEmail($email) !== false) {
-        header("location: ../signup.php?error=invalidUid");
+        header("location: ../signup.php?error=invalidEmail");
         exit();
     }
 
@@ -42,3 +42,5 @@ if (isset($_POST["submit"])) {
     header("location: ../signup.php");
     exit();
 }
+
+?>

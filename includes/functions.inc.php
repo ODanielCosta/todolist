@@ -16,7 +16,7 @@ function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat)
 function invalidUid($username)
 {
     $result;
-    if (!preg_match("/^[a-zA-Z0-9]", $username)) {
+    if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
         $result = true;
     } else {
         $result = false;
@@ -78,7 +78,7 @@ function uidExists($conn, $username, $email)
 
 function createUser($conn, $name, $email, $username, $pwd)
 {
-    $sql = "INSERT INTO users (usersName, userEmail, usersUid, usersPwd) VALUES (?,?,?,?);";
+    $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd) VALUES (?,?,?,?);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../signup.php?error=stmtfailed");
