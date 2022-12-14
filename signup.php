@@ -14,9 +14,34 @@ include_once 'header.php';
             <button type="submit" name="submit">Signup</button>
         </form>
     </main>
-
     <body>
 
+    <?php
+       if (isset($_GET["error"])){
+        if($_GET["error"] == "emptyinput"){
+            echo "<p>Fill all fields please!</p>";
+
+        } else if($_GET["error"] == "invalidUid"){
+            echo "<p>Write a better username!</p>";
+
+        } else if($_GET["error"] == "invalidEmail"){
+            echo "<p>Enter a valid email!</p>";
+
+        } else if($_GET["error"] == "passwordmatcherror"){
+            echo "<p>Passwords don't match!</p>";
+
+        } else if($_GET["error"] == "usernametaken"){            
+            echo "<p>Choose another username!</p>";
+
+        }  else if($_GET["error"] == "stmtfailed"){            
+            echo "<p>Something went  wrong, try again!</p>";
+
+        } else if($_GET["error"] == "none"){            
+            echo "<p>You are registered, than you!</p>";
+
+        } 
+       } 
+    ?>
 
         <?php
         include_once 'footer.php';
