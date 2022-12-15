@@ -129,10 +129,10 @@ function loginUser($conn, $username, $pwd){
     if($checkPwd === false){
         header("location: ../login.php?error=loginiswrong");
         exit();
-    }else if($checkPwd === false){
+    }else if($checkPwd === true){
         session_start();
-        $_SESSION[userid] = $uidExists["usersId"];
-        $_SESSION[useruid] = $uidExists["usersUid"];
+        $_SESSION["userid"] = $uidExists["usersId"];
+        $_SESSION["useruid"] = $uidExists["usersUid"];
 
         header("location: ../semanal.php");
         exit();

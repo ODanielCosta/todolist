@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -10,6 +14,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     <script src="app.js" type="text/javascript" defer></script>
 </head>
+
+
 
 <header>
     <a href="index.php">
@@ -24,7 +30,18 @@
         <button class="menu-btn">FAQ</button>
     </div>
     <div class="login-menu">
+        <!--
         <button class="signup.php"><a href="signup.php">signup</a></button>
-        <button class="login"><a href="login.php">login</a></button>
+        <button class="login"><a href="login.php">login</a></button>-->
+
+        <?php
+    if(isset($_SESSION["useruid"])){
+        echo "<button class='profileBtn'><a href='profile.php'>Profile</a></button>";
+        echo "<button class='logoutBtn'><a href='includes/logout.inc.php'>Logout</a></button>";
+    }else{
+        echo "<button class='signup.php'><a href='signup.php'>signup</a></button>";
+        echo "<button class='login'><a href='login.php'>login</a></button>";
+    }
+    ?>
     </div>
 </header>
