@@ -19,17 +19,27 @@ header{
     z-index: 9;  
 }
 
-#site-logo{
-    margin: 5px 5px 5px 15px;
-    width: 50px;
+.site-menu{
+    width: 100%;
+    display: flex;
 }
 
-.site-menu{
-    display: inline-block;
-    margin-left: 15%;
-    transform: translate(50%);
-    margin-top: 20px;;
+.site-menu a{
+    text-decoration: none;
 }
+
+#site-logo{
+    margin: 10px 0 0px 15px;
+    width: 120px;
+}
+
+.site-menu .header-menu{
+  position: absolute;
+  left: 45%;
+  top: 20px;
+}
+
+
 
 .menu-btn{
     border: none;
@@ -44,56 +54,66 @@ header{
     right: 70px;
 }
 
-
-/*********************************************/
-/*INDEX*/
+/*DATE / TITLE*/
 
 #container{
+    display: flex;
     margin-top: 60px;
-    height: 100vh;
+    height: 120px;
+    width: 100%;
     position: relative;
     background-color: #000;
+    justify-content: space-between;
 }
 
 .page-title{
     font-family: "Helvetica Neue",Helvetica,sans;
-    font-size: 60px;
-    position: absolute;
-    top: 30%;
-    left: 10%;
+    font-size: 50px;
     color: #fff;
+    margin: 15px 0 0 20px;
 }
 
 .page-slogan{
     color: #fff;
-    font-size: 25px;
+    font-size: 22.5px;
     font-family: "Helvetica Neue",Helvetica,sans;
-    position: absolute;
-    top: 37%;
-    left: 10%;
+    font-weight: 100;
+    margin: 0px 0 0 20px;
+}
+
+.date{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 12px 20px 0 0;
+}
+
+.date #year{
+    margin: 0;
+}
+
+.date #hour{
+    margin: 5px 0 0 0;
 }
 
 .date #year,
 .date #hour{
     color: #fff;
     font-family: "Helvetica Neue",Helvetica,sans;
-    font-size: 60px;
+    font-size: 35px;
+    font-weight: 600;
 }
 
 
-/*POR APAGAR*/
-#index-img{
-    width: 44%;
-    position: absolute;
-    top: 8%;
-    left: 13%;
-}
-/****/
 
-/*SEMANAL*/
+
+
+
+
+/*APP*/
 
 main{
-    margin: 60px 20px 20px 20px;
+    margin: 20px;
 }
 
 .semana{
@@ -166,8 +186,6 @@ main{
     margin: 0 0 20px 0;
     cursor: pointer;
     top:auto;
-    right:0;
-    bottom: 0;
     border: 1px solid #000;
     font-family: "Helvetica Neue",Helvetica,sans;
     color: #fff;
