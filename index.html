@@ -21,9 +21,9 @@
             <img id="site-logo" src="img/logo_todo4.png" alt="Website Logo">
         </a>
         <div class="header-menu">
-            <button class="menu-btn">Tarefas Semanais</button>
-            <button class="menu-btn">Sobre</button>
-            <button class="menu-btn">Manual</button>
+            <button class="menu-btn">Weekly Tasks</button>
+            <button class="menu-btn">About</button>
+            <button class="menu-btn">User manual</button>
         </div>       
     </div>
 </header>
@@ -34,13 +34,13 @@
     <div id="container">
 
         <div class="page-title-container">
-            <h1 class="page-title">To the point</h1>
-            <h3 class="page-slogan">Organização sem devaneios</h3>
+            <h1 class="page-title">Task Slayer</h1>
+            <h3 class="page-slogan">Destroy your tasks and achieve greatness</h3>
         </div>
 
         <div class="date">
             <p id="year"></p>
-            <hr style="background: #fff; width: 200px;">
+           <!-- <hr style="background: #fff; width: 200px;">-->
             <p id="hour"></p>
         </div>        
 
@@ -49,50 +49,50 @@
     
 
     <main>
-        <button class="clear-all" onclick="clearItems()">Limpar tarefas</button>
+        <button class="clear-all" onclick="clearItems()">Clear All Tasks</button>
 
         <br>
 
         <div class="semana">
 
-            <div class="box segunda">
-                <p class="weekday-title">Segunda</p>
+            <div class="box segunda" id="segunda-box">
+                <p class="weekday-title">Monday</p>
                 <input type="text" class="taskInput" id="taskInput1" placeholder="Insira a sua tarefa" style="display:none">
                 <ul class="taskList" id="taskList1"></ul>
             </div>
 
             <div class="box terca">
-                <p class="weekday-title">Terça</p>
+                <p class="weekday-title">Tuesday</p>
                 <input type="text" class="taskInput" id="taskInput2" placeholder="Insira a sua tarefa" style="display:none">
                 <ul class="taskList" id="taskList2"></ul>
             </div>
 
             <div class="box quarta">
-                <p class="weekday-title">Quarta</p>
+                <p class="weekday-title">Wednesday</p>
                 <input type="text" class="taskInput" id="taskInput3" placeholder="Insira a sua tarefa" style="display:none">
                 <ul class="taskList" id="taskList3"></ul>
             </div>
 
             <div class="box quinta">
-                <p class="weekday-title">Quinta</p>
+                <p class="weekday-title">Thursday</p>
                 <input type="text" class="taskInput" id="taskInput4" placeholder="Insira a sua tarefa" style="display:none">
                 <ul class="taskList" id="taskList4"></ul>
             </div>
 
             <div class="box sexta">
-                <p class="weekday-title">Sexta</p>
+                <p class="weekday-title">Friday</p>
                 <input type="text" class="taskInput" id="taskInput5" placeholder="Insira a sua tarefa" style="display:none">
                 <ul class="taskList" id="taskList5"></ul>
             </div>
 
             <div class="box sabado">
-                <p class="weekday-title">Sabado</p>
+                <p class="weekday-title">Saturday</p>
                 <input type="text" class="taskInput" id="taskInput6" placeholder="Insira a sua tarefa" style="display:none">
                 <ul class="taskList" id="taskList6"></ul>
             </div>
 
             <div class="box domingo">
-                <p class="weekday-title">Domingo</p>
+                <p class="weekday-title">Sunday</p>
                 <input type="text" class="taskInput" id="taskInput7" placeholder="Insira a sua tarefa" style="display:none">
                 <ul class="taskList" id="taskList7"></ul>
             </div>
@@ -101,8 +101,8 @@
 
         <hr style="margin:60px 0px">
 
-        <div class="achivements">
-            <p class="achiev-title">Progresso</p>
+        <div class="previous-tasks">
+            <p class="previous-title">Tasks Slayed</p>
         </div>
 
     </main>

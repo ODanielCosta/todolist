@@ -536,6 +536,21 @@ function clearItems ()
     localStorage.clear("DOMINGO");
 }
 
+let allTaskInputs = ["taskInput1","taskInput2","taskInput3","taskInput4","taskInput5","taskInput6","taskInput7"] ;
+
+
+    document.onclick = function(div)
+        {            
+                if(taskInput1.classList[1] !== 'selected'){
+                    console.log('PASSOU')
+                  // taskInput1.style.display = 'none';      
+                  }
+        }
+           
+
+
+
+
 
 
 

@@ -70,12 +70,12 @@ header{
     font-family: "Helvetica Neue",Helvetica,sans;
     font-size: 50px;
     color: #fff;
-    margin: 15px 0 0 20px;
+    margin: 20px 0 0 20px;
 }
 
 .page-slogan{
     color: #fff;
-    font-size: 22.5px;
+    font-size: 15px;
     font-family: "Helvetica Neue",Helvetica,sans;
     font-weight: 100;
     margin: 0px 0 0 20px;
@@ -85,7 +85,7 @@ header{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin: 12px 20px 0 0;
+    margin: 15px 20px 0 0;
 }
 
 .date #year{
@@ -93,12 +93,13 @@ header{
 }
 
 .date #hour{
-    margin: 5px 0 0 0;
+    margin: 10px 0 0 0;
 }
 
 .date #year,
 .date #hour{
-    color: #fff;
+    background-color: #fff;
+    color: #000;
     font-family: "Helvetica Neue",Helvetica,sans;
     font-size: 35px;
     font-weight: 600;
@@ -113,7 +114,7 @@ header{
 /*APP*/
 
 main{
-    margin: 20px;
+    margin: 40px 20px 20px 20px;
 }
 
 .semana{
@@ -139,10 +140,11 @@ main{
 
 }
 
-.weekday-title,.achiev-title{
+.weekday-title,.previous-title{
     font-size: 20px;
     font-family: "Helvetica Neue",Helvetica,sans;
     font-weight: bold;
+    cursor: pointer;
 }
 
 
@@ -183,9 +185,11 @@ main{
 
 
 .clear-all{
+    position: absolute;
+    right: 15px;
+    top: 191px;
     margin: 0 0 20px 0;
     cursor: pointer;
-    top:auto;
     border: 1px solid #000;
     font-family: "Helvetica Neue",Helvetica,sans;
     color: #fff;
