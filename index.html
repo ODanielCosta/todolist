@@ -56,43 +56,43 @@
         <div class="semana">
 
             <div class="box segunda" id="segunda-box">
-                <p class="weekday-title">Monday</p>
+                <p class="weekday-title" id="week-title">Monday</p>
                 <input type="text" class="taskInput" id="taskInput1" placeholder="Insira a sua tarefa" style="display:none">
                 <ul class="taskList" id="taskList1"></ul>
             </div>
 
             <div class="box terca">
-                <p class="weekday-title">Tuesday</p>
+                <p class="weekday-title" id="week-title">Tuesday</p>
                 <input type="text" class="taskInput" id="taskInput2" placeholder="Insira a sua tarefa" style="display:none">
                 <ul class="taskList" id="taskList2"></ul>
             </div>
 
             <div class="box quarta">
-                <p class="weekday-title">Wednesday</p>
+                <p class="weekday-title" id="week-title">Wednesday</p>
                 <input type="text" class="taskInput" id="taskInput3" placeholder="Insira a sua tarefa" style="display:none">
                 <ul class="taskList" id="taskList3"></ul>
             </div>
 
             <div class="box quinta">
-                <p class="weekday-title">Thursday</p>
+                <p class="weekday-title" id="week-title">Thursday</p>
                 <input type="text" class="taskInput" id="taskInput4" placeholder="Insira a sua tarefa" style="display:none">
                 <ul class="taskList" id="taskList4"></ul>
             </div>
 
             <div class="box sexta">
-                <p class="weekday-title">Friday</p>
+                <p class="weekday-title" id="week-title">Friday</p>
                 <input type="text" class="taskInput" id="taskInput5" placeholder="Insira a sua tarefa" style="display:none">
                 <ul class="taskList" id="taskList5"></ul>
             </div>
 
             <div class="box sabado">
-                <p class="weekday-title">Saturday</p>
+                <p class="weekday-title" id="week-title">Saturday</p>
                 <input type="text" class="taskInput" id="taskInput6" placeholder="Insira a sua tarefa" style="display:none">
                 <ul class="taskList" id="taskList6"></ul>
             </div>
 
             <div class="box domingo">
-                <p class="weekday-title">Sunday</p>
+                <p class="weekday-title" id="week-title">Sunday</p>
                 <input type="text" class="taskInput" id="taskInput7" placeholder="Insira a sua tarefa" style="display:none">
                 <ul class="taskList" id="taskList7"></ul>
             </div>
@@ -103,6 +103,8 @@
 
         <div class="previous-tasks">
             <p class="previous-title">Tasks Slayed</p>
+            <button class="clearSlayed" onclick="clearSlayed()">Erase Slayed Tasks</button>
+            <ul class="slayedList" id="slayedList"></ul>
         </div>
 
     </main>

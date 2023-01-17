@@ -6,6 +6,12 @@ let sextaItemList = [];
 let sabadoItemList = [];
 let domingoItemList = [];
 
+let slayedTasks = [];
+let slayedList = document.getElementById('slayedList');
+
+let eraseButton = document.getElementsByClassName("eraser");
+
+
 let diaDaSemana = null;
 
 let hitBox = document.querySelectorAll(".semana p");
@@ -44,6 +50,8 @@ function saveState ()
     sabadoItemList = localStorage.setItem("SABADO", sabadoItemList);
     domingoItemList = localStorage.setItem("DOMINGO", domingoItemList);
 
+    slayedTasks = localStorage.setItem("SLAYED", slayedTasks);
+
 }
 
 
@@ -63,11 +71,11 @@ function loadState ()
     sabadoItemList = localStorage.getItem("SABADO").split(',');
     domingoItemList = localStorage.getItem("DOMINGO").split(',');
 
+    slayedTasks = localStorage.getItem("SLAYED").split(',');
 
     refresh();
 
-
-    //CORRIGIR LI VAZIA
+     //CORRIGIR LI VAZIA
     function correctList (currentArray, currentKey, list)
     {
         if (currentArray[0] === '' || currentArray.length == 0)
@@ -86,6 +94,24 @@ function loadState ()
     correctList(sextaItemList, "SEXTA", taskList5);
     correctList(sabadoItemList, "SABADO", taskList6);
     correctList(domingoItemList, "DOMINGO", taskList7);
+
+     //PRINT SLAYED
+     for (i = 0; i < slayedTasks.length; i++){
+
+        //BUG FIX
+    if(slayedTasks == ''){
+        return null;
+    }
+
+        if(slayedTasks.length > 0){
+            let slayedTask = document.createElement('li');
+            slayedTask.setAttribute('class', `slayedTask`);
+            slayedTask.innerHTML = slayedTasks[i];
+            slayedList.appendChild(slayedTask);                        
+        }
+     }
+
+    
 
 }
 
@@ -106,25 +132,41 @@ hitBox[6].addEventListener("click", () => showInput(taskInput7, "domingo"));
 
 
 function showInput (currentInput, currentDia)
-{    
+{   
+        for(i = 0;i < taskInput.length; i++ ){
 
-    for(i = 0;i < taskInput.length; i++ ){
-        if(taskInput[i].id === currentInput.id){
-
-            //SELECTED
-            taskInput[i].classList.add("selected");
-
-        }else if(taskInput[i].id != currentInput.id){
-
-            //NOT SELECTED
-            taskInput[i].classList.add("Notselected");
-            taskInput[i].style.display = "none";
+            if(taskInput[i].id === currentInput.id){
+                //SELECTED
+                let selectedInput = taskInput[i].classList.add("selected");
+                taskInput[i].style.display = "block"; 
+            
+    
+            }else if(taskInput[i].id != currentInput.id){
+                //NOT SELECTED
+               // taskInput[i].classList.add("Notselected");
+                taskInput[i].classList.remove("selected");
+                taskInput[i].style.display = "none";
+            }            
+    
         }
-    }
+
+        //HIDE INPUT
+        document.addEventListener('mouseup', (e) =>
+        {  
+            for(i = 0;i < taskInput.length; i++ ){
+                if (taskInput[i].classList.contains('selected') && taskInput[i] !== document.activeElement) 
+                {
+                    taskInput[i].style.display = "none";
+                }
+            }         
+           
+        });
+        
+
+        //////    
     
     
-    
-    currentInput.style.display = "block";
+   // currentInput.style.display = "block";
 
     diaDaSemana = currentDia;
 
@@ -154,14 +196,10 @@ function showInput (currentInput, currentDia)
 
             
         }
-    };  
-   
-    
+    };   
 
     
 };
-
-
 
 
 
@@ -253,8 +291,9 @@ function getTaskInput ()
 
 
         let eraseBtn = document.createElement('button');
-        eraseBtn.textContent = 'Feito';
+        eraseBtn.textContent = 'Done';
         eraseBtn.setAttribute('class', `eraser ${v}`);
+        eraseBtn.setAttribute('id','eraser');
 
         newItem.appendChild(eraseBtn);
 
@@ -327,10 +366,11 @@ function refresh ()
                 list.appendChild(li);
 
                 let eraseBtn = document.createElement('button');
-                eraseBtn.textContent = 'Feito';
+                eraseBtn.textContent = 'Done';
                 eraseBtn.setAttribute('class', `eraser ${IdPaste}`);
-                //eraseBtn.setAttribute('onclick', `erase${eraseIdReciver}(${i})`);
+                eraseBtn.setAttribute('id', `eraser`);
                 li.appendChild(eraseBtn);
+
 
                 if (list === taskList1)
                 {
@@ -405,7 +445,7 @@ function erase1 (arrayN)
     {
         localStorage.clear("List1", segundaItemList);
         taskList1.innerHTML = null;
-    }
+    }     
 }
 
 function erase2 (arrayN)
@@ -536,17 +576,49 @@ function clearItems ()
     localStorage.clear("DOMINGO");
 }
 
-let allTaskInputs = ["taskInput1","taskInput2","taskInput3","taskInput4","taskInput5","taskInput6","taskInput7"] ;
+function clearSlayed (){
+
+    slayedTasks = [];
+    slayedTasks.innerHTML = null;
+    slayedTasks.textContent = null;
+    localStorage.clear("SLAYED");
+
+    slayedList.innerHTML = '';
+
+}
 
 
-    document.onclick = function(div)
-        {            
-                if(taskInput1.classList[1] !== 'selected'){
-                    console.log('PASSOU')
-                  // taskInput1.style.display = 'none';      
-                  }
+    //PASSAR PARA TASKS SLAYED
+    document.addEventListener('click', function(e){
+
+    
+        let verifyTarget = e.target;
+        let currentTarget = e.target;
+        
+        if(verifyTarget.textContent === 'Done'){
+                    
+                let currentSlayedTask = currentTarget.parentElement.textContent.replace('Done','');
+                slayedTasks.push(currentSlayedTask);
+                slayedTasks = slayedTasks.filter(Boolean);
+        
+                let slayedTaskContent = slayedTasks[slayedTasks.length -1];
+        
+                let slayedTask = document.createElement('li');
+                    slayedTask.textContent = slayedTaskContent;
+                    slayedTask.setAttribute('class', `slayedTask`);   
+        
+                    slayedList.appendChild(slayedTask);                                              
+        
+            
         }
-           
+   
+    
+})  
+
+
+
+
+
 
 
 
