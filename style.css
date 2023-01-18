@@ -3,6 +3,7 @@
 body{
     margin: 0;
     padding: 0;
+    transition: all 2s;
 }
 
 .hide{
@@ -35,12 +36,14 @@ header{
 #site-logo{
     margin: 10px 0 0px 15px;
     width: 120px;
+    transition: all 2s;
 }
 
 .site-menu .header-menu{
   position: absolute;
   left: 45%;
   top: 20px;
+  transition: all 1s;
 }
 
 
@@ -50,6 +53,8 @@ header{
     background: none;
     font-size: 14px;
     font-family: "Helvetica Neue",Helvetica,sans;
+    color: #000;
+    transition: all 1s;
 }
 
 .login-menu{
@@ -123,7 +128,7 @@ main{
 
 .semana{
     display: grid;
-    gap: 3rem;
+    gap: 1.5rem;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
@@ -132,7 +137,7 @@ main{
 }
 
 .box{
-    padding:0 0 0 20px ;
+    padding:0 20px 0 20px ;
     border-left: 1px solid #000;
     border-top: 1px solid #000;
 }
@@ -144,11 +149,18 @@ main{
 
 }
 
-.weekday-title,.previous-title{
+.weekday-title{
     font-size: 20px;
     font-family: "Helvetica Neue",Helvetica,sans;
     font-weight: bold;
     cursor: pointer;
+    transition: all 0.3s;
+    width: fit-content;
+}
+
+.weekday-title:hover{
+    background-color: #000;
+    color: #fff;
 }
 
 
@@ -160,10 +172,21 @@ main{
     justify-content: space-between;
     line-height: 1.5;
     font-size: 14px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Yantramanav', sans-serif;
     position: relative;
     word-break: break-word;
     hyphens: auto;
+}
+
+li.change-style{
+    border-bottom: 1px solid #000;
+}
+
+li.change-style button{
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: none;
 }
 
 .eraser{
@@ -187,10 +210,33 @@ main{
     background-position: 60px 0;
 }
 
+.rainbowBtn{
+    position: absolute;
+    right: 15px;
+    top: 191px;
+    margin: 0 0 20px 0;
+    cursor: pointer;
+    border: 1px solid #000;
+    font-family: "Helvetica Neue",Helvetica,sans;
+    color: #fff;
+    padding: 8px;
+    background-color: #000!important;
+    background:-webkit-linear-gradient(0deg,transparent 50%,#f6f6f6 50%);
+    background-size: 320px 25px;
+    transition: 0.8s;
+}
+
+.rainbowBtn:hover{
+    color: #000;
+    border: 1px solid #000;
+    background-position: 160px 0;
+}
+
 
 .clear-all{
     position: absolute;
-    right: 15px;
+    right: auto;
+    left:20px;
     top: 191px;
     margin: 0 0 20px 0;
     cursor: pointer;
@@ -210,3 +256,85 @@ main{
     background-position: 105px 0;
 }
 
+/*TASKS SLAYED*/
+
+.previous-tasks{
+    margin-top: 60px;
+    margin-bottom: 80px;
+}
+
+.previous-title{
+    font-size: 20px;
+    font-family: "Helvetica Neue",Helvetica,sans;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+.clearSlayed{
+    margin-top: -42px;
+    position: relative;
+    float:right;
+    cursor: pointer;
+    border: 1px solid #000;
+    font-family: "Helvetica Neue",Helvetica,sans;
+    color: #fff;
+    padding: 8px;
+    background-color: #000!important;
+    background:-webkit-linear-gradient(0deg,transparent 50%,#f6f6f6 50%);
+    background-size: 267px 25px;
+    transition: 0.8s;
+}
+
+.clearSlayed:hover{
+    color: #000;
+    border: 1px solid #000;
+    background-position: 133px 0;
+}
+
+.slayedList{
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    list-style:none;
+    padding: 0 0 0 5px;
+}
+
+.slayedTask{
+    line-height: 1;
+    font-size: 16px;
+    font-family: 'Yantramanav', sans-serif;
+}
+
+
+/*FOOTER*/
+
+footer{
+    display: block;
+    background-color: #000;
+    color: #fff;
+    top: auto;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+}
+
+footer p{
+    font-family: "Helvetica Neue",Helvetica,sans;
+    font-size: 12px;
+    text-align: center; 
+    margin: 10px 0 0 0; 
+}
+
+#thanks-note{
+    padding: 0px 0 0 0;
+}
+
+#copyright{
+    padding: 0px 0 10px 0;
+}
+
+.copyright-section{
+    display: flex;
+    flex-direction: column;
+}

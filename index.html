@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager</title>
+    <title>Task Slayer</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yantramanav&display=swap" rel="stylesheet">
     <script src="app.js" type="text/javascript" defer></script>
     <script src="date.js" type="text/javascript" defer></script>
+    <script src="decoration.js" type="text/javascript" defer></script>
 </head>
 
 
@@ -20,10 +23,10 @@
         <a href="index.html">
             <img id="site-logo" src="img/logo_todo4.png" alt="Website Logo">
         </a>
-        <div class="header-menu">
-            <button class="menu-btn">Weekly Tasks</button>
-            <button class="menu-btn">About</button>
-            <button class="menu-btn">User manual</button>
+        <div class="header-menu" id="site-menu">
+            <button class="menu-btn" id="menu-btn1" onclick="logoSlide();waitAndLoadSlayer();">Task Slayer</button>
+            <button class="menu-btn" id="menu-btn2" onclick="logoSlide();waitAndLoadAbout()">About</button>
+            <button class="menu-btn" id="menu-btn3" onclick="logoSlide();waitAndLoadManual()">User manual</button>
         </div>       
     </div>
 </header>
@@ -49,7 +52,9 @@
     
 
     <main>
+        
         <button class="clear-all" onclick="clearItems()">Clear All Tasks</button>
+        <button class="rainbowBtn" id="rainbowBtn"  onclick="rainbowMode()">Activate Rainbow Mode</button>
 
         <br>
 
@@ -57,53 +62,54 @@
 
             <div class="box segunda" id="segunda-box">
                 <p class="weekday-title" id="week-title">Monday</p>
-                <input type="text" class="taskInput" id="taskInput1" placeholder="Insira a sua tarefa" style="display:none">
+                <input type="text" class="taskInput" id="taskInput1" placeholder="Insert your task" style="display:none">
                 <ul class="taskList" id="taskList1"></ul>
             </div>
 
             <div class="box terca">
                 <p class="weekday-title" id="week-title">Tuesday</p>
-                <input type="text" class="taskInput" id="taskInput2" placeholder="Insira a sua tarefa" style="display:none">
+                <input type="text" class="taskInput" id="taskInput2" placeholder="Insert your task" style="display:none">
                 <ul class="taskList" id="taskList2"></ul>
             </div>
 
             <div class="box quarta">
                 <p class="weekday-title" id="week-title">Wednesday</p>
-                <input type="text" class="taskInput" id="taskInput3" placeholder="Insira a sua tarefa" style="display:none">
+                <input type="text" class="taskInput" id="taskInput3" placeholder="Insert your task" style="display:none">
                 <ul class="taskList" id="taskList3"></ul>
             </div>
 
             <div class="box quinta">
                 <p class="weekday-title" id="week-title">Thursday</p>
-                <input type="text" class="taskInput" id="taskInput4" placeholder="Insira a sua tarefa" style="display:none">
+                <input type="text" class="taskInput" id="taskInput4" placeholder="Insert your task" style="display:none">
                 <ul class="taskList" id="taskList4"></ul>
             </div>
 
             <div class="box sexta">
                 <p class="weekday-title" id="week-title">Friday</p>
-                <input type="text" class="taskInput" id="taskInput5" placeholder="Insira a sua tarefa" style="display:none">
+                <input type="text" class="taskInput" id="taskInput5" placeholder="Insert your task" style="display:none">
                 <ul class="taskList" id="taskList5"></ul>
             </div>
 
             <div class="box sabado">
                 <p class="weekday-title" id="week-title">Saturday</p>
-                <input type="text" class="taskInput" id="taskInput6" placeholder="Insira a sua tarefa" style="display:none">
+                <input type="text" class="taskInput" id="taskInput6" placeholder="Insert your task" style="display:none">
                 <ul class="taskList" id="taskList6"></ul>
             </div>
 
             <div class="box domingo">
                 <p class="weekday-title" id="week-title">Sunday</p>
-                <input type="text" class="taskInput" id="taskInput7" placeholder="Insira a sua tarefa" style="display:none">
+                <input type="text" class="taskInput" id="taskInput7" placeholder="Insert your task" style="display:none">
                 <ul class="taskList" id="taskList7"></ul>
             </div>
 
         </div>
 
-        <hr style="margin:60px 0px">
+        
 
         <div class="previous-tasks">
             <p class="previous-title">Tasks Slayed</p>
             <button class="clearSlayed" onclick="clearSlayed()">Erase Slayed Tasks</button>
+            <hr style="margin:0 0 10px 0">
             <ul class="slayedList" id="slayedList"></ul>
         </div>
 
@@ -111,5 +117,13 @@
 
 
 </body>
+<footer>
+    <div class="copyright-section">
+        <p id="thanks-note">Thank you for visiting. Here is my <a target="_blank" href="https://github.com/ODanielCosta">github</a> if you are interested.</p>
+        <p id="copyright">Copyright © 01/2023 Daniel Costa. All rights reserved.</p>
+    </div>    
+</footer>
+
+</html>
 
 
