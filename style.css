@@ -306,6 +306,43 @@ li.change-style button{
     font-family: 'Yantramanav', sans-serif;
 }
 
+/*ABOUT*/
+
+.bio{
+    display: flex;
+    margin-top: 50px;
+}
+
+#profile-pic{
+    width: 400px;
+    height: 400px;
+    margin-left: 20px;
+}
+
+.text{
+    margin-top: 10px;
+    margin-left: 5%;
+    width: 100%;
+    margin-right: 20px;
+    font-family: "Helvetica Neue",Helvetica,sans;
+    font-size: 14px;
+}
+
+.bio-link{
+    color: #f2ac00;
+    text-decoration: none;
+}
+
+.bio-link:hover{
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.text-sig{
+    width: 200px;
+    margin-left: -10px;
+}
+
 
 /*FOOTER*/
 
@@ -337,4 +374,44 @@ footer p{
 .copyright-section{
     display: flex;
     flex-direction: column;
+}
+
+
+
+/*///////////////////////////////////////////////*/
+/*///////////////////////////////////////////////*/
+/*///////////////////////////////////////////////*/
+
+/*MEDIA QUERYS*/
+
+/*1440*/
+/*----------------------------------*/
+
+@media only screen and(max-width:1440px){
+
+}
+
+
+/*1120*/
+/*----------------------------------*/
+
+@media only screen and(max-width:1120px){
+    
+}
+
+
+
+/*800*/
+/*----------------------------------*/
+
+@media only screen and(max-width:800px){
+    
+}
+
+
+/*480*/
+/*----------------------------------*/
+
+@media only screen and(max-width:480px){
+    
 }
