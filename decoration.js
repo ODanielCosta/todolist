@@ -10,6 +10,48 @@ let menuBtn1 = document.getElementById('menu-btn1');
 let menuBtn2 = document.getElementById('menu-btn2');
 let menuBtn3 = document.getElementById('menu-btn3');
 
+//ABOUT ME
+// Get the element by its id
+let picBg = document.getElementById("profile-bg");
+let yellow = '#ffffd1';
+let green = '#dbffd6';
+let blue = '#c4faf8';
+// Set an array of colors that the element will cycle through
+var colors = [yellow, green, blue];
+
+// Initialize a counter to keep track of the current color
+var counter = 0;
+
+// Use setInterval to change the background color every 2 seconds
+setInterval(function() {
+  // Change the background color to the next color in the array
+  picBg.style.backgroundColor = colors[counter];
+  // Increment the counter
+  counter++;
+  // If the counter is greater than the number of colors in the array, reset it to 0
+  if (counter >= colors.length) {
+    counter = 0;
+  }
+}, 2000);
+
+//END
+
+
+
+//LOGO SLIDE
+function logoSlide(){
+    siteLogo.style.margin = '10px 0 0px 4000px';
+    siteMenu.style.margin = '-40px';
+    menuBtn1.style.color = '#fff';
+    menuBtn2.style.color = '#fff';
+    menuBtn3.style.color = '#fff';
+}
+
+//END
+
+
+
+// TASK SLAYER
 let boxSelected = false;
 
 async function waitAndLoadSlayer(){
@@ -26,16 +68,6 @@ async function waitAndLoadManual(){
 }
 
 
-//LOGO SLIDE
-function logoSlide(){
-    siteLogo.style.margin = '10px 0 0px 4000px';
-    siteMenu.style.margin = '-40px';
-    menuBtn1.style.color = '#fff';
-    menuBtn2.style.color = '#fff';
-    menuBtn3.style.color = '#fff';
-}
-
-
 //RAINBOW MODE
 function rainbowMode(){
     
@@ -49,7 +81,6 @@ function rainbowMode(){
        
     }    
     
-
 
 
 //COLORS
@@ -143,6 +174,10 @@ document.addEventListener('click',function(e){
        decorateBox();
 
 })
+
+//END
+
+
 
 
 
