@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="page">
 
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,7 @@
 <header>
    
     <div class="site-menu">
-        <a href="index.html">
+        <a onclick="logoSlide();waitAndLoadSlayer();">
             <img id="site-logo" src="img/logo_todo4.png" alt="Website Logo">
         </a>
         <div class="header-menu" id="site-menu">
@@ -32,7 +32,7 @@
 </header>
 
 
-<body>
+<body id="body">
     <!--Date / Title-->
     <div id="container">
 
@@ -49,17 +49,41 @@
 
     </div>    
 
-    <main>
+    <main class="manual-text"  id="main">
         
-       
-
+        <p>The Task Slayer app is a simple and intuitive to-do list application that allows users to organize and manage their tasks in a fun and engaging way. With the app, users can assign tasks to specific days of the week, and keep track of the tasks they've completed by moving them to the "Tasks Slayed" section.</p>
+        <div class="img-container">
+            <img class="task-slayer-img" alt="The task slayer" src="img/task-slayer.jpg">
+        </div>
+        <br>        
+        <p class="previous-title">To use the app:</p>
+        <ul>
+            <li>Go to the Task Slayer tab</li>
+            <li>To assign a task to a specific day of the week, click on the day of the week that you wish to add the task to. The box containing that day of the week will change color to indicate that it has been selected.</li>
+            <li>Type your task into the input box located below the days of the week.</li>
+            <li>To submit the task, press the <b style="color: #f2ac00;">ENTER</b> key.</li>
+            <li>To unselect a day of the week, you can click outside the box, press the <b style="color: #f2ac00;">ESCAPE</b> key or select another day of the week.</li>
+            <li>Once you've completed a task, you can click the "Done" button to move it to the "Task Slayed" section.</li>
+            <li>The "Tasks Slayed" section serves as a "task cemetery" where you can go to pay your respects to the tasks that you've successfully completed.</li>
+        </ul>
+        <br>
+        <hr>
+        <br>
+        <div class="disclaimer">
+            <img class="warning" alt="warning" src="img/warning.svg"><p class="previous-title" style="text-transform:uppercase;">Disclaimer</p>
+        </div>
+        <br>        
+        <p>Please note that the Task Slayer app saves tasks using browser-based local storage (cookies), so if you change browsers or clear your cookies, your saved tasks will not be available. Also, this is a beginner project, the app may lose your tasks if you clean your cookies or the browser decides to clean them for you, so test it at your own risk.</p>
+        <br>
+        <p>Thank you for visiting the Task Slayer website. I hope that you've found this to-do list application to be useful and user-friendly. I appreciate your interest and hope that it will help you stay organized and productive.</p>
     </main>
 
 </body>
 
 <footer>
+    <iframe src="https://danielcosta.substack.com/embed" height="285" width="100%" style="background-color: #f1f1f1;" frameborder="0" scrolling="no"></iframe>
     <div class="copyright-section">
-        <p id="thanks-note">Thank you for visiting. Here is my <a target="_blank" href="https://github.com/ODanielCosta">github</a> if you are interested.</p>
+        <p id="thanks-note">Thank you for visiting. Here is my <a target="_blank" id="git-link" href="https://github.com/ODanielCosta">github</a> if you are interested.</p>
         <p id="copyright">Copyright © 01/2023 Daniel Costa. All rights reserved.</p>
     </div>    
 </footer>

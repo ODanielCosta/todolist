@@ -9,42 +9,75 @@ let siteMenu = document.getElementById('site-menu');
 let menuBtn1 = document.getElementById('menu-btn1');
 let menuBtn2 = document.getElementById('menu-btn2');
 let menuBtn3 = document.getElementById('menu-btn3');
+let bodyElement = document.getElementById('body')
 
 //ABOUT ME
-// Get the element by its id
 let picBg = document.getElementById("profile-bg");
 let yellow = '#ffffd1';
 let green = '#dbffd6';
 let blue = '#c4faf8';
-// Set an array of colors that the element will cycle through
-var colors = [yellow, green, blue];
+let brand = '#F2AC00';
 
-// Initialize a counter to keep track of the current color
+var colors = [yellow, green, blue, brand];
+
 var counter = 0;
 
-// Use setInterval to change the background color every 2 seconds
-setInterval(function() {
-  // Change the background color to the next color in the array
-  picBg.style.backgroundColor = colors[counter];
-  // Increment the counter
-  counter++;
-  // If the counter is greater than the number of colors in the array, reset it to 0
-  if (counter >= colors.length) {
-    counter = 0;
-  }
-}, 2000);
+if(picBg === null){
+    
+}else {
+    setInterval(function() {
+    
+        picBg.style.backgroundColor = colors[counter];
+        counter++;
+        if (counter >= colors.length) {
+          counter = 0;
+        }
+      }, 2000);
+      
+}
+
 
 //END
 
 
 
-//LOGO SLIDE
+//PAGE TRANSITION
 function logoSlide(){
     siteLogo.style.margin = '10px 0 0px 4000px';
     siteMenu.style.margin = '-40px';
     menuBtn1.style.color = '#fff';
     menuBtn2.style.color = '#fff';
     menuBtn3.style.color = '#fff';
+    
+    setTimeout(function(){
+        let transBoard = document.createElement('div');
+        let logoImg = document.createElement('img');
+        let hr1 = document.createElement('div');
+        let hr2 = document.createElement('div');
+        
+        hr1.setAttribute('class','boardHr1');
+        hr2.setAttribute('class','boardHr2');
+        logoImg.setAttribute('class','boardLogo');
+        logoImg.src = "img/logo_todo4.png";
+        transBoard.setAttribute('class', `transBoard`);
+
+        bodyElement.appendChild(transBoard);
+        transBoard.appendChild(logoImg);
+        transBoard.appendChild(hr1);
+        transBoard.appendChild(hr2);
+
+
+        let i = 0;
+        transBoard.style.opacity = `0%`;
+        setInterval(function() {
+            i += 0.01;
+            transBoard.style.opacity = i;
+        }, 3);
+
+        document.getElementById('page').style.overflow = 'hidden';
+          
+    },100)
+    
 }
 
 //END
@@ -55,15 +88,15 @@ function logoSlide(){
 let boxSelected = false;
 
 async function waitAndLoadSlayer(){
-    await new Promise(r => setTimeout(r, 700));
+    await new Promise(r => setTimeout(r, 900));
     window.location.href = "index.html";
 }
 async function waitAndLoadAbout(){
-    await new Promise(r => setTimeout(r, 700));
+    await new Promise(r => setTimeout(r, 900));
     window.location.href = "about.html";
 }
 async function waitAndLoadManual(){
-    await new Promise(r => setTimeout(r, 700));
+    await new Promise(r => setTimeout(r, 900));
     window.location.href = "manual.html";
 }
 
@@ -176,16 +209,3 @@ document.addEventListener('click',function(e){
 })
 
 //END
-
-
-
-
-
-
-
-
-   
-
-       
-
-

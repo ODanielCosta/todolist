@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="page">
 
 <head>
     <meta charset="UTF-8">
@@ -20,7 +20,7 @@
 <header>
    
     <div class="site-menu">
-        <a href="index.html">
+        <a onclick="logoSlide();waitAndLoadSlayer();">
             <img id="site-logo" src="img/logo_todo4.png" alt="Website Logo">
         </a>
         <div class="header-menu" id="site-menu">
@@ -32,7 +32,7 @@
 </header>
 
 
-<body>
+<body class="rainbow-bg" id="body">
     <!--Date / Title-->
     <div id="container">
 
@@ -51,7 +51,7 @@
 
     
 
-    <main>
+    <main id="main">
         
         <button class="clear-all" onclick="clearItems()">Clear All Tasks</button>
         <button class="rainbowBtn" id="rainbowBtn"  onclick="rainbowMode()">Activate Rainbow Mode</button>
@@ -118,8 +118,9 @@
 
 </body>
 <footer>
+    <iframe src="https://danielcosta.substack.com/embed" height="285" width="100%" style="background-color: hsl(0, 0%, 98%);" frameborder="0" scrolling="no"></iframe>
     <div class="copyright-section">
-        <p id="thanks-note">Thank you for visiting. Here is my <a target="_blank" href="https://github.com/ODanielCosta">github</a> if you are interested.</p>
+        <p id="thanks-note">Thank you for visiting. Here is my <a target="_blank" id="git-link" href="https://github.com/ODanielCosta">github</a> if you are interested.</p>
         <p id="copyright">Copyright © 01/2023 Daniel Costa. All rights reserved.</p>
     </div>    
 </footer>
